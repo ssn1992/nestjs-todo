@@ -1,10 +1,10 @@
 {
     "type": "mysql",
-    "host": process.env.RDS_HOSTNAME,
-    "port": process.env.RDS_PORT,
-    "username": process.env.RDS_USERNAME,
-    "password": process.env.RDS_PASSWORD,
-    "database": process.env.RDS_DB_NAME,
+    "host": "awseb-e-mdpnpgzur3-stack-awsebrdsdatabase-euka9bg0hamh.c7kqyaucyiqu.eu-north-1.rds.amazonaws.com",
+    "port": "3306",
+    "username": "root1q1q1q",
+    "password": "root1q1q1q",
+    "database": "ebdb",
     "entities": ["dist/**/*.entity{.ts,.js}"],
     "synchronize": true
 }
