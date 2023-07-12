@@ -8,7 +8,7 @@ It's a source code for the following article on the medium:
 
 - https://medium.com/@zoransasko/using-nestjs-mysql-typeorm-in-building-simple-notes-app-5cdbee9712e0
 
-In order to start this sample, please make sure that you specify the right data for establishing MySQL connection (in 'ormconfig.json' file, make sure that 'username', 'password' and 'database' values matches your MySQL server values):
+In order to start this sample, please make sure that you specify the right data for establishing MySQL connection (in 'app.module.ts' file, make sure that 'username', 'password' and 'database' values matches your MySQL server values):
 ```
 {
     "type": "mysql",
