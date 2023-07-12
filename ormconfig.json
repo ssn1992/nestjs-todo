@@ -1,0 +1,10 @@
+{
+    "type": "mysql",
+    "host": "awseb-e-mdpnpgzur3-stack-awsebrdsdatabase-euka9bg0hamh.c7kqyaucyiqu.eu-north-1.rds.amazonaws.com",
+    "port": 3306,
+    "username": "root1q1q1q",
+    "password": "root1q1q1q",
+    "database": "awseb-e-mdpnpgzur3-stack-awsebrdsdatabase-euka9bg0hamh",
+    "entities": ["dist/**/*.entity{.ts,.js}"],
+    "synchronize": true
+}
