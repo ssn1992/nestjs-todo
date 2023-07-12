@@ -3,6 +3,6 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AppService {
   getHello(): string {
-    return process.env.RDS_HOSTNAME + ' ' + process.env.RDS_PORT + ' ' + process.env.RDS_USERNAME + ' ' + process.env.RDS_PASSWORD + ' ' + process.env.RDS_DB_NAME
+    return process.env.PORT + ' \n' + process.env.RDS_HOSTNAME + ' \n' + process.env.RDS_PORT + ' \n' + process.env.RDS_USERNAME + ' \n' + process.env.RDS_PASSWORD + ' \n' + process.env.RDS_DB_NAME
   }
 }
