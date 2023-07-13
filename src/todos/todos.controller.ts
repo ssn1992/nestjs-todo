@@ -35,7 +35,7 @@ export class TodosController {
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id): Promise<string> {
+  remove(@Param('id', ParseIntPipe) id): Promise<{ message: string }> {
     return this.todosService.remove(id);
   }
 }
