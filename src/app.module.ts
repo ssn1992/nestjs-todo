@@ -7,12 +7,12 @@ import { TodosModule } from './todos/todos.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: process.env.RDS_HOSTNAME,
-      port: Number(process.env.RDS_PORT),
-      username: process.env.RDS_USERNAME,
-      password: process.env.RDS_PASSWORD,
-      database: process.env.RDS_DB_NAME,
+      type: 'postgres',
+      host: process.env.RDS_HOSTNAME || 'localhost',
+      port: Number(process.env.RDS_PORT) || 3306,
+      username: process.env.RDS_USERNAME || 'root',
+      password: process.env.RDS_PASSWORD || 'root',
+      database: process.env.RDS_DB_NAME || 'nest_todo',
       entities: ["dist/**/*.entity{.ts,.js}"],
       synchronize: true,
     }),
