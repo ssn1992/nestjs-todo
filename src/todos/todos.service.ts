@@ -34,6 +34,7 @@ export class TodosService {
     }
     editedTodo.description = todo.description;
     editedTodo.title = todo.title;
+    editedTodo.isDone = todo.isDone;
     await editedTodo.save();
     return editedTodo;
   }

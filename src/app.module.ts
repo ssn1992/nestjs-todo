@@ -7,9 +7,9 @@ import { TodosModule } from './todos/todos.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'postgres',
+      type: 'mysql',
       host: process.env.RDS_HOSTNAME || 'localhost',
-      port: Number(process.env.RDS_PORT) || 5432,
+      port: Number(process.env.RDS_PORT) || 3306,
       username: process.env.RDS_USERNAME || 'root',
       password: process.env.RDS_PASSWORD || 'root',
       database: process.env.RDS_DB_NAME || 'nest_todo',
