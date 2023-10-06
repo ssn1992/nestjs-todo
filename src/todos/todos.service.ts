@@ -27,6 +27,13 @@ export class TodosService {
     };
   }
 
+  async clear(): Promise<{ message: string }> {
+    await this.todosRepository.clear();
+    return {
+      message: `Todos deleted`
+    };
+  }
+
   async editTodo(id: number, todo: Todo): Promise<Todo> {
     const editedTodo: Todo = await this.todosRepository.findOne(id);
     if (!editedTodo) {

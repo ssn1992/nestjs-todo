@@ -15,6 +15,11 @@ import { TodosService } from './todos.service';
 export class TodosController {
   constructor(private todosService: TodosService) {}
 
+  @Get('clear/all')
+  clear(): Promise<{ message: string }> {
+    return this.todosService.clear();
+  }
+
   @Get()
   findAll(): Promise<Todo[]> {
     return this.todosService.getTodos();
