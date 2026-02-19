@@ -13,20 +13,12 @@ import { TodosModule } from './todos/todos.module';
       serveRoot: '/public',
     }),
     TypeOrmModule.forRoot({
-      type: 'better-sqlite3',
-      database: process.env.DB_PATH || 'todo.db',
+      type: 'sqljs',
+      location: process.env.DB_PATH || '/tmp/todo.db',
       entities: ["dist/**/*.entity{.ts,.js}"],
       synchronize: true,
+      autoSave: true,
       logging: false,
-      // Anti-locking configuration for AWS
-      prepareDatabase: (db: any) => {
-        // WAL mode allows concurrent reads and prevents locks
-        db.pragma('journal_mode = WAL');
-        // Wait up to 5 seconds if database is busy
-        db.pragma('busy_timeout = 5000');
-        // NORMAL is faster and safer for WAL mode
-        db.pragma('synchronous = NORMAL');
-      },
     }),
     TodosModule
   ],
