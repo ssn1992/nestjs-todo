@@ -2,6 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Todo } from './todo.entity';
+import { CreateTodoDto } from './dto/create-todo.dto';
+import { UpdateTodoDto } from './dto/update-todo.dto';
 
 @Injectable()
 export class TodosService {
@@ -16,7 +18,7 @@ export class TodosService {
     return this.todosRepository.findOne(id);
   }
 
-  async createTodo(todo: Todo): Promise<Todo> {
+  async createTodo(todo: CreateTodoDto): Promise<Todo> {
     return await this.todosRepository.save(todo);
   }
 
@@ -34,14 +36,20 @@ export class TodosService {
     };
   }
 
-  async editTodo(id: number, todo: Todo): Promise<Todo> {
+  async editTodo(id: number, todo: UpdateTodoDto): Promise<Todo> {
     const editedTodo: Todo = await this.todosRepository.findOne(id);
     if (!editedTodo) {
       throw new NotFoundException('Todo is not found');
     }
-    editedTodo.description = todo.description;
-    editedTodo.title = todo.title;
-    editedTodo.isDone = todo.isDone;
+    if (todo.description !== undefined) {
+      editedTodo.description = todo.description;
+    }
+    if (todo.title !== undefined) {
+      editedTodo.title = todo.title;
+    }
+    if (todo.isDone !== undefined) {
+      editedTodo.isDone = todo.isDone;
+    }
     await editedTodo.save();
     return editedTodo;
   }
