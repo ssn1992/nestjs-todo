@@ -1,43 +1,37 @@
-import {BaseEntity, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
-import {IsString, MaxLength, MinLength} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { IsString, MaxLength, MinLength, IsBoolean, IsOptional } from 'class-validator';
 
-@Entity()
-export class Todo extends BaseEntity {
-  @ApiProperty({
-    description: 'The unique identifier of the todo',
-    example: 1,
-  })
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class UpdateTodoDto {
   @ApiProperty({
     description: 'The title of the todo',
     example: 'Buy groceries',
     minLength: 1,
     maxLength: 150,
+    required: false,
   })
-  @Column({length: 150})
   @MinLength(1)
   @MaxLength(150)
   @IsString()
-  title: string;
+  @IsOptional()
+  title?: string;
 
   @ApiProperty({
     description: 'The detailed description of the todo',
     example: 'Need to buy milk, eggs, and bread from the store',
     minLength: 1,
+    required: false,
   })
-  @Column()
   @MinLength(1)
   @IsString()
-  description: string;
+  @IsOptional()
+  description?: string;
 
   @ApiProperty({
     description: 'Indicates whether the todo is completed',
     example: false,
-    default: false,
+    required: false,
   })
-  @Column('boolean', {default: false})
-  isDone = false;
+  @IsBoolean()
+  @IsOptional()
+  isDone?: boolean;
 }
