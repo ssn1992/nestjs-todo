@@ -39,7 +39,32 @@ npm run start:dev
 
 Perfect for AWS student exercises:
 
-### Single Instance Deployment (Recommended for Students):
+### Deployment Platforms:
+
+| Platform | Config File | SQLite Support | Recommended |
+|----------|-------------|----------------|-------------|
+| **Heroku** | `Procfile` ✅ | ✅ Persistent | ⭐⭐⭐⭐ |
+| **Railway** | `Procfile` ✅ | ✅ Persistent | ⭐⭐⭐⭐⭐ |
+| **Vercel** | `vercel.json` ✅ | ❌ Ephemeral | ⭐⭐ |
+| **AWS EB** | Manual | ✅ Persistent | ⭐⭐⭐⭐ |
+
+📖 See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
+
+### Quick Deploy:
+
+**Heroku/Railway (Recommended):**
+```bash
+# Procfile runs automatically
+git push heroku main  # or: railway up
+```
+
+**Vercel (Not recommended for SQLite):**
+```bash
+vercel --prod
+# ⚠️ Database resets on each cold start
+```
+
+### Single Instance Deployment (Best for Students):
 - **AWS EC2**: SQLite file stored on EBS volume
 - **AWS Elastic Beanstalk**: Single instance configuration
 - **Docker Container**: Each student gets their own container

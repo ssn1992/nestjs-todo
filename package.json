@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "deploy": "npm install && npm run build && npm run start:dev",
+    "vercel-build": "npm run build",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

@@ -98,4 +98,19 @@ async function bootstrap(): Promise<void> {
 
   await app.listen(process.env.PORT || 3000);
 }
-bootstrap();
+
+// Check if running on Vercel (serverless)
+if (!process.env.VERCEL) {
+  bootstrap();
+}
+
+// Export for Vercel serverless
+export default async (req, res) => {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe());
+  app.enableCors();
+  await app.init();
+
+  const server = app.getHttpAdapter().getInstance();
+  return server(req, res);
+};

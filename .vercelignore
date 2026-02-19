@@ -1,0 +1,13 @@
+node_modules
+.git
+.gitignore
+.idea
+.vscode
+*.log
+*.db
+*.db-shm
+*.db-wal
+test
+coverage
+.env
+.env.local
